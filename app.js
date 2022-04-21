@@ -6,6 +6,7 @@ const app = express() ;
 const https = require("https") ;
 const { post } = require("request");
 const { json } = require("body-parser");
+const { dirname } = require("path");
 
 
 app.use(bodyParser.json());
@@ -40,12 +41,21 @@ app.post("/" , function( req , res)
   const url = "https://us14.api.malchimp.com/3.0/lists/4b74d2edd8" ;
   const options = {
      method : "post" ,
-     auth :"himanshu12:f42674b70e8b2686234a902aac8554bd-us14" ,
+     auth :"himanshu14:65f53437b8d74b06b8b99ed7e92eef0d-us14"
 
   }
 
   const request = https.request(url , options , function(response)
   {
+      if(response.statusCode === 200 )
+      {
+         res.sendFile(--dirname + "/success.html");
+      }
+      else
+      {
+         res.sendFile(--dirname + "/failure.html");
+      }
+
      response.on("data" , function(data)
      {
         console.log(JSON.parse(data));
@@ -57,10 +67,15 @@ app.post("/" , function( req , res)
 
 });
 
-
+app.get("/failure" , function(req , res)
+{
+   res.redirect("/")
+})
 
 app.listen( 3000 , function()
 {
    console.log(" server is running at port 3000 ") ;
 });
 
+//api key
+//65f53437b8d74b06b8b99ed7e92eef0d-us14
