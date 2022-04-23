@@ -38,10 +38,10 @@ app.post("/" , function( req , res)
  const jsonData = JSON.stringify(data) ;
   console.log( fdata , ldata  , email );
  
-  const url = "https://us14.api.malchimp.com/3.0/lists/4b74d2edd8" ;
+  const url = "<-----Create Your own api key and mention here--->" ;
   const options = {
      method : "post" ,
-     auth :"himanshu14:65f53437b8d74b06b8b99ed7e92eef0d-us14"
+     auth :"himanshu14:<--mnetion your api key--->"
 
   }
 
